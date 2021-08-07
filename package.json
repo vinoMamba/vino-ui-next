@@ -1,11 +1,29 @@
 {
   "name": "vino-ui-next",
-  "version": "0.0.0",
+  "description": "一个基于Vue3.0的UI框架",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com:vinoMamba/vino-ui-next.git"
+  },
+  "keywords": [
+    "Vue3.0",
+    "ui"
+  ],
+  "author": {
+    "name": "vinoMamba",
+    "email": "vino0908@outlook.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vinoMamba/vino-ui-next/issues"
+  },
+  "homepage": "https://github.com/vinoMamba/vino-ui-next#readme",
   "dependencies": {
     "vue": "^3.0.5"
   },
