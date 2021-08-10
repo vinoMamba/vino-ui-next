@@ -1,11 +1,10 @@
 <template>
-  <h4>Vino</h4>
+  <h1>Doc</h1>
 </template>
-
 <script lang="ts">
 import {defineComponent} from "vue";
 
 export default defineComponent({
-  name: "Vino"
+  name: "Doc"
 });
 </script>
