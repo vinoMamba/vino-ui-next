@@ -4,15 +4,15 @@ import Nav from "../components/Nav.vue";
 import {useToggleInject} from "../hooks";
 
 export default defineComponent({
-  name: 'Doc',
+  name: "Doc",
   setup() {
     const {toggleState} = useToggleInject();
     return () => {
       return (
           <div class="wrapper">
-            <Nav class="doc-nav" show-menu-button="true"/>
+            <Nav class="doc-nav" showMenuButton={true}/>
             <div class="content-wrapper">
-              <aside class="{asideToggle}">
+              <aside class={{asideToggle: toggleState.value}}>
                 <h4>文档</h4>
                 <ul>
                   <li>

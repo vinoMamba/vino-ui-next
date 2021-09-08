@@ -12,7 +12,7 @@ export default defineComponent({
       default: false
     }
   },
-  setup() {
+  setup(props) {
     const {setToggleState} = useToggleInject();
     return () => {
       return (
@@ -30,9 +30,12 @@ export default defineComponent({
                 <a href="https://gitee.com/vino-wang/vino-ui" target="_blank">码云</a>
               </li>
             </ol>
-            <div class="toggle-icon" onclick={() => setToggleState}>
-              <SvgIcon name="caidan"/>
-            </div>
+            {props.showMenuButton ?
+                <div class="toggle-icon" onClick={() => setToggleState()}>
+                  <SvgIcon name="menu"/>
+                </div> :
+                ""
+            }
           </nav>
       )
           ;
