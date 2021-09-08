@@ -2,7 +2,6 @@
 import {defineComponent} from "vue";
 import Nav from "../components/Nav.vue";
 import SvgIcon from "../components/SvgIcon.vue";
-import {useToggleProvide} from "../hooks/useToggle";
 
 export default defineComponent({
   name: "Home",
@@ -16,7 +15,7 @@ export default defineComponent({
               <main>
                 <h1>Vino Design</h1>
                 <h4>一个基于 <strong>Vue3</strong> 的简易UI框架</h4>
-                <router-link to="/doc/intro" className="start">
+                <router-link to="/doc" className="start">
                   <SvgIcon name="start"/>
                   <span>Start</span>
                 </router-link>

@@ -10,10 +10,17 @@ const HomeRouter: RouteRecordRaw = {
     name: "Home",
     component: () => import("/src/views/Home.vue")
 };
+
+const DocRouter: RouteRecordRaw = {
+    path: "/doc",
+    name: "Doc",
+    component: () => import("/src/views/Doc.vue")
+};
 const basicRoutes = [RootRouter, HomeRouter];
 
 const RouterMap: RouteRecordRaw[] = [
     ...basicRoutes,
+    DocRouter
 ];
 
 export default RouterMap;
