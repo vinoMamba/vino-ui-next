@@ -12,6 +12,7 @@ export default defineComponent({
       default: false
     }
   },
+
   setup(props) {
     const {setToggleState} = useToggleInject();
     return () => {
@@ -95,5 +96,4 @@ nav {
   }
 
 }
-
 </style>

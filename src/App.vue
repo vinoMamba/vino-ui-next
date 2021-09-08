@@ -11,5 +11,6 @@ export default defineComponent({
   setup() {
     useProvider();
   }
+
 });
 </script>
