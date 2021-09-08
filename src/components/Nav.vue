@@ -1,48 +1,48 @@
-<template>
-  <nav>
-    <div class="logo">
-      <router-link to="/">
-        <svg class="icon">
-          <use xlink:href="#icon-logo"></use>
-        </svg>
-      </router-link>
-    </div>
-    <ol class="menu">
-      <li>
-        <router-link to="/doc/button">组件</router-link>
-      </li>
-      <li>
-        <a href="https://gitee.com/vino-wang/vino-ui" target="_blank">码云</a>
-      </li>
-    </ol>
-    <div class="toggle-icon" @click="toggleAside" v-if="showMenuButton">
-      <svg class="icon">
-        <use xlink:href="#icon-caidan"></use>
-      </svg>
-    </div>
-  </nav>
-</template>
+<script lang="tsx">
+import {defineComponent} from "vue";
+import SvgIcon from "./SvgIcon.vue";
+import {useToggleInject} from "../hooks";
 
-<script lang="ts">
-import {inject, Ref} from "vue";
-
-export default {
+export default defineComponent({
   name: "Nav",
+  components: {SvgIcon},
   props: {
     showMenuButton: {
       type: Boolean,
       default: false
     }
   },
-  setup() {
-    const asideToggle = inject<Ref<Boolean>>("asideToggle");
-    const toggleAside = () => {
-      asideToggle.value = !asideToggle.value;
-    };
-    return {toggleAside};
-  }
-};
 
+  setup(props) {
+    const {setToggleState} = useToggleInject();
+    return () => {
+      return (
+          <nav>
+            <div class="logo">
+              <router-link to="/">
+                <SvgIcon name="logo"/>
+              </router-link>
+            </div>
+            <ol class="menu">
+              <li>
+                <router-link to="/doc/button">组件</router-link>
+              </li>
+              <li>
+                <a href="https://gitee.com/vino-wang/vino-ui" target="_blank">码云</a>
+              </li>
+            </ol>
+            {props.showMenuButton ?
+                <div class="toggle-icon" onClick={() => setToggleState()}>
+                  <SvgIcon name="menu"/>
+                </div> :
+                ""
+            }
+          </nav>
+      )
+          ;
+    };
+  }
+});
 </script>
 
 <style lang="scss" scoped>
@@ -96,5 +96,4 @@ nav {
   }
 
 }
-
 </style>

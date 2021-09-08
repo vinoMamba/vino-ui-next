@@ -1,53 +1,50 @@
-<template>
-  <div class="wrapper">
-    <Nav class="home-nav"/>
-    <main>
-      <h1>Vino Design</h1>
-      <h4>一个基于 <strong>Vue3</strong> 的简易UI框架</h4>
-      <router-link to="/doc" class="start">
-        <svg class="icon">
-          <use xlink:href="#icon-start"></use>
-        </svg>
-        <span>Start</span>
-      </router-link>
-    </main>
-  </div>
-  <ul class="AD">
-    <li>
-      <a href="https://cn.vuejs.org/index.html" target="_blank">
-        <h4>Vue 3</h4>
-        <svg class="ad-icon">
-          <use xlink:href="#icon-Vue"></use>
-        </svg>
-      </a>
-    </li>
-    <li>
-      <a href="https://github.com/microsoft/TypeScript" target="_blank">
-        <h4>TypeScript</h4>
-        <svg class="ad-icon">
-          <use xlink:href="#icon-typescript-def"></use>
-        </svg>
-      </a>
-    </li>
-    <li>
-      <a href="" target="_blank">
-        <h4>广告位招租</h4>
-        <svg class="ad-icon">
-          <use xlink:href="#icon-guanggao"></use>
-        </svg>
-      </a>
-    </li>
-  </ul>
-</template>
-
-<script lang="ts">
+<script lang="tsx">
 import {defineComponent} from "vue";
 import Nav from "../components/Nav.vue";
+import SvgIcon from "../components/SvgIcon.vue";
 
 export default defineComponent({
   name: "Home",
-
-  components: {Nav}
+  components: {SvgIcon},
+  setup() {
+    return () => {
+      return (
+          <>
+            <div class="wrapper">
+              <Nav class="home-nav"/>
+              <main>
+                <h1>Vino Design</h1>
+                <h4>一个基于 <strong>Vue3</strong> 的简易UI框架</h4>
+                <router-link to="/doc" className="start">
+                  <SvgIcon name="start"/>
+                  <span>Start</span>
+                </router-link>
+              </main>
+            </div>
+            <ul class="AD">
+              <li>
+                <a href="https://cn.vuejs.org/index.html" target="_blank">
+                  <h4>Vue 3</h4>
+                  <SvgIcon name="Vue"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/microsoft/TypeScript" target="_blank">
+                  <h4>TypeScript</h4>
+                  <SvgIcon name="typescript-def"/>
+                </a>
+              </li>
+              <li>
+                <a href="" target="_blank">
+                  <h4>广告位招租</h4>
+                  <SvgIcon name="guanggao"/>
+                </a>
+              </li>
+            </ul>
+          </>
+      );
+    };
+  }
 });
 </script>
 

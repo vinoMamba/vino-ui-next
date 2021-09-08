@@ -1,14 +1,15 @@
-import {createRouter, createWebHashHistory} from "vue-router";
 import {App} from "vue";
-import {basicRoutes} from "./routes";
+import RouterMap from "./routes";
+import {createRouter, createWebHashHistory} from "vue-router";
 
-export const router = createRouter({
+const router = createRouter({
     history: createWebHashHistory(),
-    routes: basicRoutes,
+    routes: RouterMap,
     strict: true,
-    scrollBehavior: () => ({left: 0, top: 0})
+    scrollBehavior: () => ({left: 0, right: 0})
 });
 
 export function setupRouter(app: App<Element>) {
     app.use(router);
 }
+

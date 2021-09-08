@@ -1,16 +1,31 @@
 import {RouteRecordRaw} from "vue-router";
 
-
-const RootRoute: RouteRecordRaw = {
+const RootRouter: RouteRecordRaw = {
     path: "/",
     name: "Root",
+    redirect: "/home"
+};
+const HomeRouter: RouteRecordRaw = {
+    path: "/home",
+    name: "Home",
     component: () => import("/src/views/Home.vue")
 };
 
-const DocRoute: RouteRecordRaw = {
+const DocRouter: RouteRecordRaw = {
     path: "/doc",
     name: "Doc",
-    component: () => import("/src/views/Doc.vue")
+    component: () => import("/src/views/Doc.vue"),
+    children: [{
+        path: "/doc/switch",
+        name: "Switch",
+        component: () => import("/src/components/demo/SwitchDemo.vue")
+    }]
 };
+const basicRoutes = [RootRouter, HomeRouter];
 
-export const basicRoutes = [RootRoute, DocRoute];
+const RouterMap: RouteRecordRaw[] = [
+    ...basicRoutes,
+    DocRouter
+];
+
+export default RouterMap;
