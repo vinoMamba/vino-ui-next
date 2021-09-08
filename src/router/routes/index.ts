@@ -14,7 +14,12 @@ const HomeRouter: RouteRecordRaw = {
 const DocRouter: RouteRecordRaw = {
     path: "/doc",
     name: "Doc",
-    component: () => import("/src/views/Doc.vue")
+    component: () => import("/src/views/Doc.vue"),
+    children: [{
+        path: "/doc/switch",
+        name: "Switch",
+        component: () => import("/src/components/demo/SwitchDemo.vue")
+    }]
 };
 const basicRoutes = [RootRouter, HomeRouter];
 

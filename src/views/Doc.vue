@@ -44,7 +44,7 @@ export default defineComponent({
                   </li>
                 </ul>
               </aside>
-              <main class={{mainToggle: toggleState}}>
+              <main class={{mainToggle: toggleState.value}}>
                 <router-view/>
               </main>
             </div>
