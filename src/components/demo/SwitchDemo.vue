@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import {defineComponent, ref} from "vue";
-import Switch from "/@/lib/Switch.vue";
+import Switch from "/@/lib/switch/Switch.vue";
 
 export default defineComponent({
   name: "SwitchDemo",
