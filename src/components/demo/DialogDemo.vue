@@ -16,11 +16,12 @@ import Button from "../../lib/button/Button.vue";
 import Dialog from "../../lib/dialog/Dialog.vue";
 
 export default defineComponent({
-  name: 'DialogDemo',
+  name: "DialogDemo",
   components: {Button, Dialog},
   setup() {
     const visible = ref(false);
     const toggleDialog = () => {
+      console.log("xxx");
       visible.value = !visible.value;
     };
     const cancel = () => {

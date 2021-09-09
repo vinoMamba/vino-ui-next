@@ -1,70 +1,73 @@
-<script lang="tsx">
-import {defineComponent} from "vue";
-import Button from "../button/Button.vue";
+<template>
+  <div class="vino-dialog-display" :class="{visible}">
+    <div class="vino-dialog-overlay" @click="toggleOnOverlay"></div>
+    <div class="vino-dialog-wrapper">
+      <div class="vino-dialog">
+        <header>
+          <slot name="title"/>
+          <Button theme="error" @click="closeDialog">x</Button>
+        </header>
+        <main>
+          <slot name="content"/>
+        </main>
+        <footer>
+          <Button @click="cancel">Cancel</Button>
+          <Button @click="confirm">confirm</Button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</template>
 
-export default defineComponent({
-  name: 'Dialog',
-  components: {Button},
-  props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
-    closeOnOverlay: {
-      type: Boolean,
-      default: true
-    },
-    cancel: {
-      type: Function
-    },
-    confirm: {
-      type: Function
+<script lang="ts">
+import {defineComponent, PropType} from "vue";
+import Button from "/@/lib/button/Button.vue";
+
+export default defineComponent(
+    {
+      name: "Dialog",
+      components: {Button},
+      props: {
+        visible: {
+          type: Boolean,
+          default: false
+        },
+        closeOnOverlay: {
+          type: Boolean,
+          default: true
+        },
+        cancel: {
+          type: Function as PropType<() => void>,
+        },
+        confirm: {
+          type: Function as PropType<() => void>
+        }
+
+      },
+      setup(props, context) {
+
+        const closeDialog = () => {
+          context.emit("update:visible", !props.visible);
+        };
+        const toggleOnOverlay = () => {
+          if (props.closeOnOverlay) {
+            closeDialog();
+          }
+        };
+        const cancel = () => {
+          if (props.cancel) {
+            closeDialog();
+          }
+        };
+        const confirm = () => {
+          if (props.confirm) {
+            closeDialog();
+          }
+        };
+        return {closeDialog, toggleOnOverlay, cancel, confirm};
+      }
     }
-
-  },
-  setup(props, context) {
-    const closeDialog = () => {
-      context.emit('update:visible', !props.visible);
-    };
-    const toggleOnOverlay = () => {
-      if (props.closeOnOverlay) {
-        closeDialog();
-      }
-    };
-    const cancel = () => {
-      if (props.cancel) {
-        closeDialog();
-      }
-    };
-    const confirm = () => {
-      if (props.confirm) {
-        closeDialog();
-      }
-    };
-    return () => {
-      return (
-          <div class={{"vino-dialog-display": true, visible: props.visible}}>
-            <div class="vino-dialog-overlay" onClick={toggleOnOverlay}></div>
-            <div class="vino-dialog-wrapper">
-              <div class="vino-dialog">
-                <header>
-                  <slot name="title"/>
-                  <Button theme="error">x</Button>
-                </header>
-                <main>
-                  <slot name="content"/>
-                </main>
-                <footer>
-                  <Button>Cancel</Button>
-                  <Button>confirm</Button>
-                </footer>
-              </div>
-            </div>
-          </div>
-      );
-    };
-  }
-});
+);
 </script>
 
 <style lang="scss">

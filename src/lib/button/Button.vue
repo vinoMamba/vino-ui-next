@@ -1,12 +1,12 @@
 <script lang="tsx">
-import {computed, defineComponent, renderSlot} from "vue";
+import {computed, defineComponent} from "vue";
 
 export default defineComponent({
-  name: 'Button',
+  name: "Button",
   props: {
     theme: {
       type: String,
-      default: 'primary'
+      default: "primary"
     },
     circle: {
       type: Boolean,
@@ -18,18 +18,18 @@ export default defineComponent({
     },
     size: {
       type: String,
-      default: 'normal'
+      default: "normal"
     },
     loading: {
       type: Boolean,
       default: false
-    }
+    },
   },
   setup(props, {slots}) {
     const classes = computed(() => {
       const {theme, circle, disabled, size, loading} = props;
       return {
-        ['vino-button']: true,
+        ["vino-button"]: true,
         [`vino-button-theme-${theme}`]: theme,
         [`vino-button-circle`]: circle,
         [`vino-button-disabled`]: disabled,
@@ -42,9 +42,9 @@ export default defineComponent({
           <button class={classes.value} disabled={props.disabled}>
             {props.loading ?
                 <span class="vino-button-loading-span"/> :
-                ''
+                ""
             }
-            {slots.default()}
+            {slots.default && slots.default()}
           </button>
       );
     };
