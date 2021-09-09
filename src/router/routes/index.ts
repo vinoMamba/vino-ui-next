@@ -21,11 +21,15 @@ const DocRouter: RouteRecordRaw = {
             name: "Switch",
             component: () => import("/src/components/demo/SwitchDemo.vue")
         },
-
         {
             path: "/doc/button",
             name: "Button",
             component: () => import("/src/components/demo/ButtonDemo.vue")
+        },
+        {
+            path: "/doc/badge",
+            name: "Badge",
+            component: () => import("/src/components/demo/BadgeDemo.vue")
         }
     ]
 };
