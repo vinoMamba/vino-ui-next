@@ -17,6 +17,21 @@ const DocRouter: RouteRecordRaw = {
     component: () => import("/src/views/Doc.vue"),
     children: [
         {
+            path: "/doc/intro",
+            name: "Intro",
+            component: () => import("/src/components/demo/Intro.vue")
+        },
+        {
+            path: "/doc/install",
+            name: "Install",
+            component: () => import("/src/components/demo/Install.vue")
+        },
+        {
+            path: "/doc/use",
+            name: "Use",
+            component: () => import("/src/components/demo/Use.vue")
+        },
+        {
             path: "/doc/switch",
             name: "Switch",
             component: () => import("/src/components/demo/SwitchDemo.vue")
