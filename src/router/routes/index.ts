@@ -35,6 +35,11 @@ const DocRouter: RouteRecordRaw = {
             path: "/doc/dialog",
             name: "Dialog",
             component: () => import("/src/components/demo/DialogDemo.vue")
+        },
+        {
+            path: "/doc/tab",
+            name: "Tab",
+            component: () => import("/src/components/demo/TabsDemo.vue")
         }
     ]
 };

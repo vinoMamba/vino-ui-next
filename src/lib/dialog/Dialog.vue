@@ -1,9 +1,30 @@
-<script lang="tsx">
+<template>
+  <div class="vino-dialog-display" :class="{visible}">
+    <div class="vino-dialog-overlay" @click="toggleOnOverlay"></div>
+    <div class="vino-dialog-wrapper">
+      <div class="vino-dialog">
+        <header>
+          <slot name="title"/>
+          <Button theme="error" @click="closeDialog">x</Button>
+        </header>
+        <main>
+          <slot name="content"/>
+        </main>
+        <footer>
+          <Button @click="cancel">Cancel</Button>
+          <Button @click="confirm">confirm</Button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+
 import {defineComponent} from "vue";
 import Button from "../button/Button.vue";
 
 export default defineComponent({
-  name: 'Dialog',
   components: {Button},
   props: {
     visible: {
@@ -23,6 +44,7 @@ export default defineComponent({
 
   },
   setup(props, context) {
+
     const closeDialog = () => {
       context.emit('update:visible', !props.visible);
     };
@@ -32,38 +54,18 @@ export default defineComponent({
       }
     };
     const cancel = () => {
-      if (props.cancel) {
+      if (props.cancel && props.cancel !== false) {
         closeDialog();
       }
     };
     const confirm = () => {
-      if (props.confirm) {
+      if (props.confirm && props.confirm !== false) {
         closeDialog();
       }
     };
-    return () => {
-      return (
-          <div class={{"vino-dialog-display": true, visible: props.visible}}>
-            <div class="vino-dialog-overlay" onClick={toggleOnOverlay}></div>
-            <div class="vino-dialog-wrapper">
-              <div class="vino-dialog">
-                <header>
-                  <slot name="title"/>
-                  <Button theme="error">x</Button>
-                </header>
-                <main>
-                  <slot name="content"/>
-                </main>
-                <footer>
-                  <Button>Cancel</Button>
-                  <Button>confirm</Button>
-                </footer>
-              </div>
-            </div>
-          </div>
-      );
-    };
+    return {closeDialog, toggleOnOverlay, cancel, confirm};
   }
+
 });
 </script>
 
@@ -123,4 +125,3 @@ export default defineComponent({
 
 
 </style>
-
