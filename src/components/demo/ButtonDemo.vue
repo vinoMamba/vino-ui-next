@@ -1,5 +1,5 @@
 <template>
-  <Button>牛逼</Button>
+  <Button @click="onClick">牛逼</Button>
 
   <Button loading>loading</Button>
   <Button disabled>normal</Button>
@@ -20,7 +20,15 @@ import {defineComponent} from "vue";
 import Button from "../../lib/button/Button.vue";
 
 export default defineComponent({
-  name: 'ButtonDemo',
+  name: "ButtonDemo",
   components: {Button},
+  setup() {
+    const onClick = () => {
+      console.log("xxx");
+    };
+    return {
+      onClick
+    };
+  }
 });
 </script>

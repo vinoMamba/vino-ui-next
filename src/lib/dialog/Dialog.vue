@@ -20,7 +20,6 @@
 </template>
 
 <script lang="ts">
-
 import {defineComponent} from "vue";
 import Button from "../button/Button.vue";
 
@@ -54,12 +53,12 @@ export default defineComponent({
       }
     };
     const cancel = () => {
-      if (props.cancel && props.cancel !== false) {
+      if (props.cancel) {
         closeDialog();
       }
     };
     const confirm = () => {
-      if (props.confirm && props.confirm !== false) {
+      if (props.confirm) {
         closeDialog();
       }
     };
