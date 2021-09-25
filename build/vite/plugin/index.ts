@@ -3,12 +3,15 @@ import vue from "@vitejs/plugin-vue";
 import {PluginOption} from "vite";
 import {svgBuilder} from "./svgBuilder";
 import {ViteEnv} from "../../../types/global";
+import {md} from "./md";
 
 
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
     const vitePlugins: (PluginOption | PluginOption[]) = [vue(), vueJsx()];
     //添加svg-icon插件
-    vitePlugins.push(svgBuilder('./src/assets/icons/'));
+    vitePlugins.push(svgBuilder("./src/assets/icons/"));
+    // @ts-ignore
+    vitePlugins.push(md());
 
     return vitePlugins;
 }
